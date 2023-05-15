@@ -1,0 +1,18 @@
+h1 {
+    font-family: 'Futura';
+    margin: 0.5rem;
+}
+
+.navbar {
+    display: flex;
+    height: 10rem;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbarTexto {
+    display: flex;
+    justify-content: start;
+}
+
