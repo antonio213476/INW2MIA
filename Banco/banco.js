@@ -94,7 +94,7 @@ class contaCorrente extends banco{
                 return
             }
             console.log(mensagem +`, você ainda pode requisitar `
-            +this.contadorTalao+` talões! Seu saldo atual agora é R$ `+this.saldo
+            +this.contadorTalao+` talão/ões! Seu saldo atual agora é R$ `+this.saldo
             )
 
             return
@@ -161,11 +161,11 @@ let conta5 = new contaEstudantil(5,"523.456.789-10",100,false,5000)
 
 const promptSync = require('prompt-sync')();
 
-let mensagemNormal = `\n[NOME DO BANCO]\n[SLOGAN]\n
+let mensagemNormal = `\nBanco Batata\nSeu dinheiro, suas regras\n 
 1 - CONTA POUPANÇA\n2 - CONTA CORRENTE
 3 - CONTA ESPECIAL\n4 - CONTA EMPRESA
 5 - CONTA ESTUDANTIL\n6 - SAIR\n`
-3
+
 console.log(mensagemNormal)
 
 let numeroDaConta = parseInt(promptSync("DIGITE O CODIGO DA OPERAÇÃO SELECIONADA:"))
@@ -201,7 +201,6 @@ switch(numeroDaConta) {
 if(contavalida === true) {
 
 let contaAtual = eval("conta" + numeroDaConta.toString())
-console.log(contaAtual)
 contaAtual.ativar()
 
 if(contaAtual.ativado === false ) {
@@ -209,7 +208,7 @@ if(contaAtual.ativado === false ) {
     return
 }
 
-let mensagemConta = `\n[NOME DO BANCO]\n[SLOGAN]\n  
+let mensagemConta = `\nBanco Batata\nSeu dinheiro, suas regras\n  
 CONTA ${contaAtualString}\nSaldo Atual: R$ ${contaAtual.saldo}`
 
 console.log(mensagemConta)
@@ -272,8 +271,6 @@ switch(numeroDaConta) {
                 break
             }
         }
-
-        
         break;
     case 4:
         let querEmprestimo = promptSync(
