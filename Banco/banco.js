@@ -197,101 +197,111 @@ switch(numeroDaConta) {
         contavalida = false
         break;
 }
+let movimento;
+let valormovimento;
+let continuar;
+
+let operacaoDoBanco = function(conta) {
+    let mensagemConta = `\nBanco Batata\nSeu dinheiro, suas regras\n  
+CONTA ${contaAtualString}\nSaldo Atual: R$ ${conta.saldo}`
+    
+    console.log(mensagemConta)
+    
+    
+    
+    movimento = promptSync("MOVIMENTO : D = Debito | C = Credito ")
+    valormovimento = parseInt(promptSync("VALOR MOVIMENTO: R$ "))
+    continuar = promptSync("CONTIUNAR : S/N ")
+
+    
+    if(continuar==='S') {
+        if(Number.isInteger(valormovimento) === false) {
+            console.log('ERRO: NUMERO INVALIDO')
+            return
+        }
+        
+        if(movimento==='D') {
+            conta.debito(valormovimento)
+        }else if(movimento==='C') {
+            conta.credito(valormovimento)
+        } else {
+            console.log('ERRO: MOVIMENTO INVALIDO')
+            return
+        }
+    
+        if(conta.saldo < 0) {
+            if(numeroDaConta !== 3) {
+                console.log("ERRO: SALDO INDISPONIVEL")
+                return
+            }
+            conta.usarLimite()
+            let outraOperacao = promptSync("Você gostaria de fazer uma outra operação? (S/N) ")
+            if(outraOperacao == 'S') {
+                operacaoDoBanco(conta)
+            }
+        }
+    }
+}
 
 if(contavalida === true) {
 
-let contaAtual = eval("conta" + numeroDaConta.toString())
-contaAtual.ativar()
+    let contaAtual = eval("conta" + numeroDaConta.toString())
+    contaAtual.ativar()
 
-if(contaAtual.ativado === false ) {
-    console.log("A conta está inativa! Não é possível usar uma conta inativa")
-    return
-}
-
-let mensagemConta = `\nBanco Batata\nSeu dinheiro, suas regras\n  
-CONTA ${contaAtualString}\nSaldo Atual: R$ ${contaAtual.saldo}`
-
-console.log(mensagemConta)
-
-
-
-let movimento = promptSync("MOVIMENTO : D = Debito | C = Credito ")
-let valormovimento = parseInt(promptSync("VALOR MOVIMENTO: R$ "))
-let continuar = promptSync("CONTIUNAR : S/N ")
-
-
-if(continuar==='S') {
-    if(Number.isInteger(valormovimento) === false) {
-        console.log('ERRO: NUMERO INVALIDO')
-        return
-    }
-    
-    if(movimento==='D') {
-        contaAtual.debito(valormovimento)
-    }else if(movimento==='C') {
-        contaAtual.credito(valormovimento)
-    } else {
-        console.log('ERRO: MOVIMENTO INVALIDO')
+    if(contaAtual.ativado === false ) {
+        console.log("A conta está inativa! Não é possível usar uma conta inativa")
         return
     }
 
-    if(contaAtual.saldo < 0) {
-        if(numeroDaConta !== 3) {
-            console.log("ERRO: SALDO INDISPONIVEL")
-            return
-        }
-        contaAtual.usarLimite()
-    }
-}
+    operacaoDoBanco(contaAtual)
 
-
-
-switch(numeroDaConta) {
     
-
-    case 1:
-        let dataDeHoje = promptSync("Qual é a data de hoje?")
-        console.log(dataDeHoje)
-        contaAtual.correcao(dataDeHoje)
-        break;
-    case 2:
-        while(contaAtual.contadorTalao > 0) {
-            if (contaAtual.saldo < precoTalao) {
-                break
+    switch(numeroDaConta) {
+        
+    
+        case 1:
+            let dataDeHoje = promptSync("Qual é a data de hoje?")
+            console.log(dataDeHoje)
+            contaAtual.correcao(dataDeHoje)
+            break;
+        case 2:
+            while(contaAtual.contadorTalao > 0) {
+                if (contaAtual.saldo < precoTalao) {
+                    break
+                }
+    
+                let querTalao = promptSync(
+                    `Você gostaria de pedir um talão? Cada talão é R$ 30,00 (S/N)`
+                )
+    
+                if(querTalao == 'S') {
+                    contaAtual.pedirTalao()
+                    
+                } else {
+                    break
+                }
             }
-
-            let querTalao = promptSync(
-                `Você gostaria de pedir um talão? Cada talão é R$ 30,00 (S/N)`
+            break;
+        case 4:
+            let querEmprestimo = promptSync(
+                `Você gostaria de pedir um emprestimo a sua empresa? (S/N)`
             )
-
-            if(querTalao == 'S') {
-                contaAtual.pedirTalao()
-                
-            } else {
-                break
+    
+            if(querEmprestimo == 'S') {
+                let emprestimo = parseInt(promptSync(`Qual o valor do emprestimo? (Limite de R$ `+contaAtual.emprestimoEmpresa+`) `))
+    
+                contaAtual.pedirEmprestimo(emprestimo)
             }
-        }
-        break;
-    case 4:
-        let querEmprestimo = promptSync(
-            `Você gostaria de pedir um emprestimo a sua empresa? (S/N)`
-        )
-
-        if(querEmprestimo == 'S') {
-            let emprestimo = parseInt(promptSync(`Qual o valor do emprestimo? (Limite de R$ `+contaAtual.emprestimoEmpresa+`) `))
-
-            contaAtual.pedirEmprestimo(emprestimo)
-        }
-
-        break;
-    case 5:
-        let querEstudantil = promptSync(
-            `Você gostaria de usar o emprestimo estudantil? (S/N)`
-        )
-
-        if(querEstudantil == 'S') {
-            contaAtual.usarEstudantil()
-        }
-        break;
-}
+    
+            break;
+        case 5:
+            let querEstudantil = promptSync(
+                `Você gostaria de usar o emprestimo estudantil? (S/N)`
+            )
+    
+            if(querEstudantil == 'S') {
+                contaAtual.usarEstudantil()
+            }
+            break;
+    }
 }
