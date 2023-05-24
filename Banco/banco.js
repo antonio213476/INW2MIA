@@ -82,19 +82,22 @@ class contaCorrente extends banco{
         super(numero, cpf, saldo, ativado);
         this.contadorTalao = contadorTalao
     }
-
+    
     pedirTalao() {
         if(this.saldo >= precoTalao) {
             let mensagem = `Talão requisitado`
             this.saldo -= precoTalao
             this.contadorTalao -= 1
 
-            if(this.contadorTalao < 1) {
-                console.log(mensagem +'!')
+            if(this.contadorTalao < 1 || this.saldo < precoTalao) {
+                console.log(mensagem +'!'+' Seu saldo atual agora é R$ '+this.saldo)
                 return
-            }
+            } 
+
+            
+            
             console.log(mensagem +`, você ainda pode requisitar `
-            +this.contadorTalao+` talão/ões! Seu saldo atual agora é R$ `+this.saldo
+            +this.contadorTalao+` talões! Seu saldo atual agora é R$ `+this.saldo
             )
 
             return
