@@ -79,13 +79,28 @@ h1 {
 }
 
 .verMais {
+   display: flex;
    justify-content: flex-end;
-   align-items: flex-end;
-   width: 30%;
+   width: 100%;
    color:rgb(101, 101, 216);
+
 }
 
 .listaPokemons {
     flex-direction: row;
 }
 
+.verMaisTexto {
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+.cadastro {
+    background-color: #306CB4;
+}
+
+.cadastre {
+    color:white;
+    font-weight: bold;
+    padding: 3rem;
+}
