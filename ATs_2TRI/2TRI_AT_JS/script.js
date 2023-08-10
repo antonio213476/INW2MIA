@@ -4,13 +4,14 @@ let valorunitariodoacao = [0.00,25.00,50.00]
 let movimento = [0,0,0]
 let valorTotal = 0
 let prompt = require('prompt-sync')()
-
+let contiunar
 
 console.log(`
 Bem vindo a EquiChance
 Trazendo oportunidades a todos\n`
 )
 
+do{
 console.log('COD\tSERVICOS\t\t\tDOACOES')
 for(i=0;i<valorunitariodoacao.length;i++) {
     console.log(codigo[i]+"\t"+servico[i]+"\t\t"+valorunitariodoacao[i])
@@ -53,5 +54,9 @@ for(x=0;x<11;x++) {
         }
     }
 }
+console.log('\nObrigado pelas doações! \nTotal de doações: R$ '+valorTotal)
 
-console.log('\nObrigado pelas doações! \nTotal de doações: '+valorTotal+'\nVolte Sempre!')
+contiunar = prompt("Deseja continuar(S|N)").toUpperCase
+} while(contiunar==='S')
+
+console.log('Volte Sempre!')
