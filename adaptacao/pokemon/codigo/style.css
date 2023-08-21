@@ -1,3 +1,4 @@
+
 body {
     margin: 0px;
 }
@@ -6,25 +7,6 @@ h1 {
     font-family: 'Futura';
     margin: 1.5rem;
     font-size: 2vw;
-}
-
-.navbar {
-    display: flex;
-    height: 6rem;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbarTexto {
-    display: flex;
-    justify-content: start;
-}
-
-.navbarImagem {
-    margin: 2vw;
-    width: auto;
-    height: auto;
 }
 
 #bgPokemon {
@@ -57,23 +39,6 @@ h1 {
     width: 50%;
 }
 
-.botaoCadrastar {
-    background-color: rgb(47, 47, 184);
-    margin: 2rem;
-    width: 15%;
-    height: 10%;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-radius: 0.25rem;
-}
-
-.textoBotao {
-    margin: 0px;
-    padding: 0px;
-    font-weight: bold;
-}
-
 .pokedex {
     margin: 3rem;
 }
@@ -103,4 +68,8 @@ h1 {
     color:white;
     font-weight: bold;
     padding: 3rem;
+}
+
+.botaoConcluir { 
+    box-shadow: 5.6533331871032715px 5.6533331871032715px 12.719999313354492px 0px rgba(255, 255, 255, 0.36);
 }
