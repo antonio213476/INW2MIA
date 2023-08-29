@@ -8,7 +8,6 @@ const firebaseConfig = {
   appId: "1:1096001431760:web:eac16257f2fc5024f6d6d5"
 };
 
-
 firebase.initializeApp(firebaseConfig)
 
 const emailField = document.getElementById('email')
@@ -19,9 +18,13 @@ loginButton.addEventListener('click', () => {
     const email = emailField.value;
     const password = passwordField.value;
 
-    firebaseauth().signInWithEmailAndPassword(email,password)
+    firebase.auth().signInWithEmailAndPassword(email,password)
         .then((userCredential) => {
             const user = userCredential.user;
-            
+            console.log('Usuário logado : ',user)
+        })
+        .catch((error) =>{
+          console.log("Erro de autenticação : ", error.message)
         })
 })
+
