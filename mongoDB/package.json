@@ -4,11 +4,14 @@
   "description": "Primeiro uso do moogose",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js localhost 8000"
   },
   "author": "Antonio",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^7.5.0"
+    "firebase": "^10.3.1",
+    "mongoose": "^7.5.0",
+    "nodemon": "^3.0.1"
   }
 }
