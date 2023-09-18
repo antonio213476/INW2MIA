@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        <center>
+            O jogo
+        </center>
+    </h1>
+    <h3>
+        <center>
+            tente adivinhar o numero de 1 a 100
+        </center>
+    </h3>
+    <input id="guess" type="number" maxlength="2">
+
+    <script>
+        let rng = Math.floor(Math.random()*100)
+        let tentativas = 10
+        let queroContinua = 0
+        let numero;
+
+        const tentativasMax = tentativas
+        const queroContinuaMax = 5
+
+        function advinhar(){
+            numero = Number(document.getElementById("guess").value);
+            if(tentativas === 0){
+                console.log('n tem mais tentativas :(')
+                queroContinua += 1
+                if(queroContinua===5){
+                    console.log('ta bom se que tanto joga... toma mais algumas tentativas')
+                    tentativas = tentativasMax
+                    queroContinua = 0
+                }
+                return
+            }
+            if(numero!==rng){
+                tentativas-=1
+                console.log('erro... \n'+tentativas+' tentativas sobrando.')
+                return
+            }
+            console.log('acerto')
+            tentativas = tentativasMax
+        }
+
+        console.log('O numero não é '+rng)
+
+
+    </script>  
+
+    <button onclick="advinhar()">Advinhar</button>
+  
+</body>
+</html>
