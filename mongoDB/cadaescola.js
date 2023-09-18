@@ -1,6 +1,6 @@
 // mongodb://localhost:27017
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://127.0.0.1:27017/escola',
 {
@@ -36,7 +36,33 @@ const paulo = new Aluno({
 
 paulo.save();
 
-Aluno.findOne({nome : "Paulo da Silva"}, function(err,Aluno){
-    console.log(Aluno)
+const maria = new Aluno({
+    matricula : 'rm202',
+    nome : "Maria da Silva",
+    idade : 18,
+    turma : '2MIA'
 })
-//arrumar
+
+maria.save();
+
+
+async function alunos() {
+    const alunes= await Aluno.find({});
+    alunes.forEach(function(alune){
+        console.log(alune);
+    });
+}
+
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
+  
+async function test() {
+    alunos()
+    await delay(5000);
+    mongoose.connection.close()
+}
+
+test()
+
+
