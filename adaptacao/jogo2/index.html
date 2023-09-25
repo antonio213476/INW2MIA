@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        <center>
+            O jogo
+        </center>
+    </h1>
+    <h3>
+        <center>
+            digite seu ano de nascimento
+        </center>
+    </h3>
+    <input id="nasicmento" type="number" maxlength="2">
+
+    <script>
+        const ano = 2023;
+        let idade; 
+
+        function calcular(){
+           idade = Number(document.getElementById("nasicmento").value);
+           idade = ano - idade
+           document.getElementById("idade").textContent = 'sua idade é '+idade+' anos'
+        }
+
+        
+
+
+    </script>  
+
+    <button onclick="calcular()">Calcular</button>
+    <br><br>
+    <h1 id="idade"></h1>
+
+
+</body>
+</html>
