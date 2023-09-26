@@ -40,7 +40,7 @@
 
 
         <div class="mt-5 mb-5">
-          <h1 class="fs-1 fw-bold"> CONTA </h1>
+          <h1 class="fs-1 fw-bold"> Conta </h1>
           <div class="d-flex justify-content-center ms-5 me-5 ">
             <span class="border border-2 rounded-1">
               <img src="../imagens/conta.jpg" class="img-fluid" style='height: 175px' alt="">  
@@ -48,16 +48,87 @@
           </div>
         </div>
 
+        <div class="mt-5 mb-3 border border-1 rounded-1 ms-3 me-3">
+          <h1 class="mt-2 fs-1 fw-bold"> Informações Básicas </h1> 
+          <h1 class="mt-2 mb-4 fs-6 fw-light"> Algumas informações podem estar vísiveis a outros.   </h1>
+          
+          <hr class="m-0 ms-3 me-3">
+          <div class="d-flex justify-content-start ms-3 me-3">
+            <div class="fs-5 p-2 flex-grow-1">Nome:</div>
+            <div id="nome" class="fs-5 fw-light p-2">Antonio</div>
+          </div>  
+          <hr class="m-0 ms-3 me-3">
+          <div class="d-flex justify-content-start ms-3 me-3">
+            <div class="fs-5 p-2 flex-grow-1">Data de aniversário:</div>
+            <div class="fs-5 fw-light p-2">04/06/2000</div>
+          </div> 
+          <hr class="m-0 ms-3 me-3">
+          <div class="d-flex justify-content-start ms-3 me-3">
+            <div class="fs-5 p-2 flex-grow-1">Gênero:</div>
+            <div class="fs-5 fw-light p-2">Indefinido</div>
+          </div> 
+          <hr class="m-0 ms-3 me-3">
+          <div class="d-flex justify-content-start ms-3 me-3">
+            <div class="fs-5 p-2 flex-grow-1">Senha:</div>
+            <button id="passbtn" class="fs-5 fw-light p-2 border-0 bg-transparent" onclick="togglepassword()">●●●●●●●●</button>
+          </div> 
+        </div>
         
+        <div class="mb-5 border border-1 rounded-1 ms-3 me-3">
+          <h1 class="mt-2 fs-1 fw-bold"> Contato </h1> 
+          <h1 class="mt-2 mb-4 fs-6 fw-light"> Suas informações de contato   </h1>
+          
+          <hr class="m-0 ms-3 me-3">
+          <div class="d-flex justify-content-start ms-3 me-3">
+            <div class="fs-5 p-2 flex-grow-1">Email:</div>
+            <div id="email" class="fs-5 fw-light p-2">meuemail@gmail.com</div>
+          </div>  
+          <hr class="m-0 ms-3 me-3">
+          <div class="d-flex justify-content-start ms-3 me-3">
+            <div class="fs-5 p-2 flex-grow-1">Telefone:</div>
+            <div class="fs-5 fw-light p-2">11 1234-5678</div>
+          </div>  
+        </div>
+
+        <script>
+          let elementoSenha;
+          let senha = 'minhaSenha123';
+          let email = 'meuemail@gmail.com';
+          let nome = 'Nome';
+          if(localStorage.getItem("nome")) {
+            nome = localStorage.getItem("nome") 
+            console.log('Nome foi achado com sucesso! Nome atual: '+nome)
+            document.getElementById('nome').textContent = nome
+          }
+          if(localStorage.getItem("email")) {
+            email = localStorage.getItem("email") 
+            console.log('E-mail foi achado com sucesso! E-mail atual: '+email)
+            document.getElementById('email').textContent = email
+          }
+          if(localStorage.getItem("senha")) {
+            senha = localStorage.getItem("senha") 
+            console.log('Senha foi achada com sucesso! Senha atual: '+senha)
+          }
+          
+
+
+          function togglepassword(){
+            elementoSenha = document.getElementById('passbtn')
+
+            if(elementoSenha.textContent === senha) {
+              elementoSenha.textContent = '●●●●●●●●'
+              return
+            } 
+            elementoSenha.textContent = senha
+          }
+        </script>
+
 
     <nav class="navbar bottom navbar-expand-sm navbar-dark" style="background-color: #21386E;">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img class="img-fluid" src="../imagens/PokemonEnd.png" alt="" class="">
             </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
             <ul class="navbar-nav ms-auto me-5">
               <li class="nav-item">
                 <img class="img-fluid" src="../imagens/Instagram.png" alt="" class="">

@@ -77,6 +77,33 @@
           <a href="galeria.html" class="fs-5 fw-medium mt-3 me-5 d-flex flex-row-reverse"> VEJA MAIS </a>
     </div>
 
+    <script>
+        function cadastrar() {
+          let email = document.getElementById('Email')
+          let senha = document.getElementById('Senha')
+          let nome = document.getElementById('Nome')
+
+          console.log('Iniciando cadastro')
+
+          if(email.value === '') {
+            console.warn('ERRO: E-mail não presente')
+            return
+          }
+          if(senha.value === '') {
+            console.warn('ERRO: Senha não presente')
+            return
+          }
+          if(nome.value === '') {
+            console.warn('ERRO: Nome não presente')
+            return
+          }
+          localStorage.setItem("senha", senha.value);
+          localStorage.setItem("email", email.value); 
+          localStorage.setItem("nome", nome.value); 
+          console.log('Cadastro feito com sucesso')
+        }
+    </script>
+
     <div class="card text-bg-dark border-0 rounded-0 mt-5">
         <img src="../imagens/Cadastro.png" class="card-img border-0 rounded-0" alt="...">
         <div class="card-img-overlay img-fluid d-inline-flex flex-column justify-content-center align-items-center w-50">
@@ -84,6 +111,12 @@
             <input 
                 type="email" 
                 class="form-control w-75 mt-4 mb-3" 
+                id="Nome" 
+                placeholder="Nome de usuário"
+            >
+            <input 
+                type="email" 
+                class="form-control w-75 mb-3" 
                 id="Email" 
                 placeholder="exemplo@email.com"
             >
@@ -93,7 +126,8 @@
                 id="Senha" 
                 placeholder="Senha"
             > 
-            <button type="button" class="botaoConcluir btn btn-warning w-25 border-4 border-warning-subtle rounded text-white fw-bold">
+            <p id="textoErro me-auto"></p>
+            <button type="button" class="botaoConcluir btn btn-warning w-25 border-4 border-warning-subtle rounded text-white fw-bold" onclick="cadastrar()">
                 CONCLUIR
             </button>
         </div>
@@ -104,9 +138,7 @@
           <a class="navbar-brand" href="#">
             <img class="img-fluid" src="../imagens/PokemonEnd.png" alt="" class="">
             </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          
             <ul class="navbar-nav ms-auto me-5">
               <li class="nav-item">
                 <img class="img-fluid" src="../imagens/Instagram.png" alt="" class="">
